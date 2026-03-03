@@ -79,6 +79,16 @@ h1{font-size:36px;font-weight:700;background:linear-gradient(135deg,#fff,#a78bfa
 .footer{text-align:center;border-top:1px solid #1e1e2e;padding-top:24px;font-size:11px;color:#4b5563}
 .footer strong{color:#6b7280}
 
+/* Language Support Section */
+.lang-support{background:linear-gradient(135deg,#1a1a2e 0%,#0f1a2e 100%);border:1px solid #2a2a3e;border-radius:12px;padding:24px 28px;margin-bottom:30px;position:relative;overflow:hidden}
+.lang-support::before{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,#6c47ff20 0%,transparent 70%);pointer-events:none}
+.lang-content{display:flex;align-items:flex-start;gap:20px}
+.lang-icon{font-size:48px;flex-shrink:0;filter:drop-shadow(0 4px 12px #6c47ff40)}
+.lang-text h3{font-size:18px;font-weight:700;color:#fff;margin-bottom:12px;background:linear-gradient(135deg,#fff,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lang-text p{font-size:13px;color:#9ca3af;line-height:1.8;margin-bottom:12px}
+.lang-text p strong{color:#e8e8f0;font-weight:600}
+.lang-highlight{font-size:14px;color:#6c47ff;font-weight:600;font-style:italic;margin-top:16px;padding-top:16px;border-top:1px solid #2a2a3e}
+
 /* Light theme overrides */
 body.light-theme{background:#f8f9fc;color:#1a1a2e}
 body.light-theme .badge{border:1px solid #6c47ff40;background:#6c47ff10;color:#6c47ff}
@@ -110,6 +120,12 @@ body.light-theme .ms{background:#f0fdf4;border:1px solid #bbf7d0;color:#16a34a}
 body.light-theme .sc{background:#fff;border:1px solid #e5e7eb;box-shadow:0 1px 3px #0000000a}
 body.light-theme .footer{border-top:1px solid #e5e7eb;color:#9ca3af}
 body.light-theme .footer strong{color:#6b7280}
+body.light-theme .lang-support{background:linear-gradient(135deg,#f5f3ff 0%,#eff6ff 100%);border:1px solid #e0d7ff}
+body.light-theme .lang-support::before{background:radial-gradient(circle,#6c47ff10 0%,transparent 70%)}
+body.light-theme .lang-text h3{color:#1a1a2e;background:linear-gradient(135deg,#1a1a2e,#6c47ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+body.light-theme .lang-text p{color:#6b7280}
+body.light-theme .lang-text p strong{color:#1a1a2e}
+body.light-theme .lang-highlight{color:#6c47ff;border-top:1px solid #e0d7ff}
 </style>
 </head>
 <body>
@@ -134,6 +150,19 @@ body.light-theme .footer strong{color:#6b7280}
 <div class="io-row">
 <div class="io-card input"><div class="io-label">Input</div><div class="io-title">Jira Ticket</div><div class="io-desc">A normal ticket with title, description, acceptance criteria in Gherkin format, and optional Figma link. No technical instructions needed.</div><span class="tag">BOD-614</span><span class="tag">Gherkin AC</span><span class="tag">Figma URL</span></div>
 <div class="io-card output"><div class="io-label">Output</div><div class="io-title">Production-Ready Code</div><div class="io-desc">Feature code, unit tests, integration tests, documentation, and a detailed review report &mdash; all following your existing codebase patterns exactly.</div><span class="tag">TypeScript</span><span class="tag">Tests</span><span class="tag">Docs</span></div>
+</div>
+
+<div class="stitle">Language &amp; Framework Support</div>
+<div class="lang-support">
+<div class="lang-content">
+<div class="lang-icon">🌐</div>
+<div class="lang-text">
+<h3>Works with ANY Stack</h3>
+<p>This system is not limited to React or TypeScript. The <strong>Codebase Understanding Agent (Agent 02)</strong> automatically scans and learns any project's language, framework, and patterns before writing a single line of code.</p>
+<p>It works with any stack including <strong>React, Vue, Angular, Next.js</strong> on the frontend, <strong>Node.js, Python, Java, Go, Ruby on Rails</strong> on the backend, and <strong>React Native or Flutter</strong> for mobile. The commands and workflow stay exactly the same regardless of the technology used.</p>
+<p class="lang-highlight">One system for every team and every project in the organisation.</p>
+</div>
+</div>
 </div>
 
 <div class="stitle">The Agent Pipeline &mdash; 9 Specialized AI Agents</div>
