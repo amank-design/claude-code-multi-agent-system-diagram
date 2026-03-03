@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Multi-Agent Development System</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Space Grotesk',sans-serif;background:#f8f9fc;color:#1a1a2e;padding:40px 20px}
+.page{max-width:1100px;margin:0 auto}
+.header{text-align:center;margin-bottom:50px}
+.badge{display:inline-block;border:1px solid #6c47ff40;background:#6c47ff10;color:#6c47ff;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:16px;font-family:'JetBrains Mono',monospace}
+h1{font-size:36px;font-weight:700;background:linear-gradient(135deg,#1a1a2e,#6c47ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+.header p{color:#6b7280;font-size:14px}
+.stitle{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#9ca3af;margin-bottom:16px;font-family:'JetBrains Mono',monospace}
+.you-do{background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:16px 24px;margin-bottom:30px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.you-icon{width:40px;height:40px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.you-text strong{display:block;font-size:13px;color:#1d4ed8;font-weight:600;margin-bottom:3px}
+.you-text span{font-size:12px;color:#6b7280}
+.steps{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.step{background:#dbeafe;border:1px solid #93c5fd;border-radius:8px;padding:6px 12px;font-size:11px;color:#1d4ed8;font-weight:500}
+.io-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:30px}
+.io-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px 24px;box-shadow:0 1px 3px #0000000a}
+.io-card.input{border-left:3px solid #6c47ff}
+.io-card.output{border-left:3px solid #10b981}
+.io-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;font-family:'JetBrains Mono',monospace}
+.io-card.input .io-label{color:#6c47ff}
+.io-card.output .io-label{color:#10b981}
+.io-title{font-size:16px;font-weight:600;color:#111827;margin-bottom:6px}
+.io-desc{font-size:13px;color:#6b7280;line-height:1.5}
+.tag{display:inline-block;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:6px;padding:3px 10px;font-size:11px;color:#6c47ff;margin-top:10px;margin-right:6px;font-family:'JetBrains Mono',monospace}
+.agents-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:30px}
+.ac{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;position:relative;box-shadow:0 1px 3px #0000000a}
+.an{font-size:10px;font-weight:700;letter-spacing:1px;font-family:'JetBrains Mono',monospace;margin-bottom:8px}
+.aname{font-size:13px;font-weight:600;color:#111827;margin-bottom:4px}
+.arole{font-size:11px;color:#9ca3af;margin-bottom:10px}
+.aout{font-size:10px;font-family:'JetBrains Mono',monospace;color:#9ca3af;background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:4px 8px}
+.adot{position:absolute;top:16px;right:16px;width:8px;height:8px;border-radius:50%}
+.a1{border-top:2px solid #f59e0b}.a1 .an{color:#d97706}.a1 .adot{background:#f59e0b}
+.a2{border-top:2px solid #6c47ff}.a2 .an{color:#6c47ff}.a2 .adot{background:#6c47ff}
+.a3{border-top:2px solid #ec4899}.a3 .an{color:#db2777}.a3 .adot{background:#ec4899}
+.a4{border-top:2px solid #3b82f6}.a4 .an{color:#2563eb}.a4 .adot{background:#3b82f6}
+.a5{border-top:2px solid #10b981}.a5 .an{color:#059669}.a5 .adot{background:#10b981}
+.a6{border-top:2px solid #f97316}.a6 .an{color:#ea6d0b}.a6 .adot{background:#f97316}
+.a7{border-top:2px solid #ef4444}.a7 .an{color:#dc2626}.a7 .adot{background:#ef4444}
+.a8{border-top:2px solid #14b8a6}.a8 .an{color:#0d9488}.a8 .adot{background:#14b8a6}
+.apr{border-top:2px solid #8b5cf6}.apr .an{color:#7c3aed}.apr .adot{background:#8b5cf6}
+.flow-container{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;margin-bottom:30px;box-shadow:0 1px 3px #0000000a}
+.flow-row{display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.fb{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;white-space:nowrap}
+.fa{color:#d1d5db;font-size:16px;padding:0 4px}
+.fdiv{border:none;border-top:1px solid #f3f4f6;margin:16px 0}
+.flabel{font-size:10px;color:#9ca3af;font-family:'JetBrains Mono',monospace;margin-bottom:10px;letter-spacing:1px}
+.verdict-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:30px}
+.vc{border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px}
+.vc.approved{background:#f0fdf4;border:1px solid #bbf7d0}
+.vc.fixes{background:#fef2f2;border:1px solid #fecaca}
+.vi{font-size:22px;flex-shrink:0;margin-top:2px}
+.vt{font-size:13px;font-weight:600;margin-bottom:4px}
+.vc.approved .vt{color:#16a34a}
+.vc.fixes .vt{color:#dc2626}
+.vs{font-size:11px;color:#6b7280;line-height:1.8}
+.mcp-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:30px}
+.mc{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;text-align:center;box-shadow:0 1px 3px #0000000a}
+.mi{font-size:24px;margin-bottom:8px}
+.mn{font-size:13px;font-weight:600;color:#111827;margin-bottom:4px}
+.md{font-size:11px;color:#6b7280;margin-bottom:8px}
+.ms{display:inline-block;background:#f0fdf4;border:1px solid #bbf7d0;color:#16a34a;font-size:10px;font-weight:600;padding:3px 10px;border-radius:10px;font-family:'JetBrains Mono',monospace}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:40px}
+.sc{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;text-align:center;box-shadow:0 1px 3px #0000000a}
+.sn{font-size:28px;font-weight:700;background:linear-gradient(135deg,#6c47ff,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+.sl{font-size:11px;color:#6b7280;line-height:1.4}
+.footer{text-align:center;border-top:1px solid #e5e7eb;padding-top:24px;font-size:11px;color:#9ca3af}
+.footer strong{color:#6b7280}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="header">
+<div class="badge">ideyaLabs Tech &middot; Internal Tool</div>
+<h1>Multi-Agent Development System</h1>
+<p>End-to-end automated pipeline from Jira ticket to reviewed, tested, production-ready code</p>
+</div>
+
+<div class="stitle">What You Do &mdash; 4 Steps Only</div>
+<div class="you-do">
+<div class="you-icon">&#x1F464;</div>
+<div class="you-text"><strong>Your entire involvement in the process</strong><span>Everything else is handled automatically by the agent pipeline</span></div>
+<div class="steps"><div class="step">&#9312; Write Jira ticket</div><div class="step">&#9313; Run ./run.sh BOD-123</div><div class="step">&#9314; Read review report</div><div class="step">&#9315; git commit</div></div>
+</div>
+
+<div class="io-row">
+<div class="io-card input"><div class="io-label">Input</div><div class="io-title">Jira Ticket</div><div class="io-desc">A normal ticket with title, description, acceptance criteria in Gherkin format, and optional Figma link. No technical instructions needed.</div><span class="tag">BOD-614</span><span class="tag">Gherkin AC</span><span class="tag">Figma URL</span></div>
+<div class="io-card output"><div class="io-label">Output</div><div class="io-title">Production-Ready Code</div><div class="io-desc">Feature code, unit tests, integration tests, documentation, and a detailed review report &mdash; all following your existing codebase patterns exactly.</div><span class="tag">TypeScript</span><span class="tag">Tests</span><span class="tag">Docs</span></div>
+</div>
+
+<div class="stitle">The Agent Pipeline &mdash; 9 Specialized AI Agents</div>
+<div class="agents-grid">
+<div class="ac a1"><div class="adot"></div><div class="an">AGENT 01</div><div class="aname">Task Breakdown</div><div class="arole">Tech Lead</div><div class="aout">&rarr; subtasks.json + figma-url.txt</div></div>
+<div class="ac a2"><div class="adot"></div><div class="an">AGENT 02</div><div class="aname">Codebase Understanding</div><div class="arole">Software Architect</div><div class="aout">&rarr; codebase-context.md (once + incremental)</div></div>
+<div class="ac a3"><div class="adot"></div><div class="an">AGENT 03</div><div class="aname">Figma Design</div><div class="arole">UI/UX Analyst</div><div class="aout">&rarr; figma-specs.md</div></div>
+<div class="ac a4"><div class="adot"></div><div class="an">AGENT 04</div><div class="aname">Development</div><div class="arole">Senior Developer</div><div class="aout">&rarr; Feature code + changes.md</div></div>
+<div class="ac a5"><div class="adot"></div><div class="an">AGENT 05</div><div class="aname">Testing</div><div class="arole">QA Engineer</div><div class="aout">&rarr; Unit + integration tests (80%+ coverage)</div></div>
+<div class="ac a6"><div class="adot"></div><div class="an">AGENT 06</div><div class="aname">Code Reviewer</div><div class="arole">Senior Reviewer</div><div class="aout">&rarr; review-report.md + VERDICT</div></div>
+<div class="ac a7"><div class="adot"></div><div class="an">AGENT 07</div><div class="aname">Bug Fix</div><div class="arole">Bug Fix Engineer</div><div class="aout">&rarr; Fixed code (only if NEEDS FIXES)</div></div>
+<div class="ac a8"><div class="adot"></div><div class="an">AGENT 08</div><div class="aname">Documentation</div><div class="arole">Technical Writer</div><div class="aout">&rarr; README + JSDoc + CHANGELOG</div></div>
+<div class="ac apr"><div class="adot"></div><div class="an">PR REVIEWER</div><div class="aname">Pull Request Review</div><div class="arole">Mode 2 &mdash; PR Review only</div><div class="aout">&rarr; PR review-report.md + VERDICT</div></div>
+</div>
+
+<div class="stitle">Pipeline Flow &mdash; Mode 1 (Feature Development)</div>
+<div class="flow-container">
+<div class="flabel">PIPELINE START</div>
+<div class="flow-row">
+<div class="fb" style="border-color:#6c47ff30;color:#6c47ff;background:#f5f3ff;">./run.sh BOD-123</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#6c47ff30;color:#6c47ff;background:#f5f3ff;">Auto-check codebase-context.md</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#f59e0b30;color:#d97706;background:#fffbeb;">Agent 01 reads Jira</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#ec489930;color:#db2777;background:#fdf2f8;">Agent 03 reads Figma</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#3b82f630;color:#2563eb;background:#eff6ff;">Agent 04 writes code</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#10b98130;color:#059669;background:#f0fdf4;">Agent 05 writes tests</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#f9731630;color:#ea6d0b;background:#fff7ed;">Agent 06 reviews</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#1a1a2e20;color:#1a1a2e;background:#f9fafb;">You read report</div>
+</div>
+<hr class="fdiv">
+<div class="flabel">VERDICT PATHS</div>
+<div class="flow-row">
+<div class="fb" style="border-color:#bbf7d0;color:#16a34a;background:#f0fdf4;">&#10003; APPROVED &rarr; git commit &rarr; Agent 08 docs &rarr; Done</div>
+<div style="width:20px"></div>
+<div class="fb" style="border-color:#fecaca;color:#dc2626;background:#fef2f2;">&#10007; NEEDS FIXES &rarr; Agent 07 fixes &rarr; Agent 06 re-reviews &rarr; loop until APPROVED</div>
+</div>
+</div>
+
+<div class="verdict-row">
+<div class="vc approved"><div class="vi">&#x2705;</div><div><div class="vt">VERDICT: APPROVED</div><div class="vs">git add .<br>git commit -m "feat: BOD-123"<br>git push<br>./docs.sh &rarr; README + JSDoc + CHANGELOG updated</div></div></div>
+<div class="vc fixes"><div class="vi">&#x1F501;</div><div><div class="vt">VERDICT: NEEDS FIXES</div><div class="vs">./fix.sh BOD-123<br>Agent 07 fixes HIGH + MEDIUM issues<br>Agent 06 re-reviews automatically<br>Loop repeats until APPROVED</div></div></div>
+</div>
+
+<div class="stitle">External Integrations via MCP</div>
+<div class="mcp-row">
+<div class="mc"><div class="mi">&#x1F3A8;</div><div class="mn">Figma MCP</div><div class="md">Reads design specs, colors, typography, components directly from Figma desktop app</div><div class="ms">&#10003; Connected</div></div>
+<div class="mc"><div class="mi">&#x1F4CB;</div><div class="mn">Atlassian MCP</div><div class="md">Reads Jira tickets, acceptance criteria, and linked subtasks via REST API</div><div class="ms">&#10003; Connected</div></div>
+<div class="mc"><div class="mi">&#x1F419;</div><div class="mn">GitHub MCP</div><div class="md">Fetches PR diffs, file changes, and metadata for automated PR review mode</div><div class="ms">&#10003; Connected</div></div>
+</div>
+
+<div class="stitle">System Efficiency</div>
+<div class="stats-row">
+<div class="sc"><div class="sn">4</div><div class="sl">Commands you ever need to run</div></div>
+<div class="sc"><div class="sn">0</div><div class="sl">Manual hooks or config to manage</div></div>
+<div class="sc"><div class="sn">80%</div><div class="sl">Minimum test coverage on all new code</div></div>
+<div class="sc"><div class="sn">9</div><div class="sl">Specialized AI agents in the pipeline</div></div>
+</div>
+
+<div class="footer"><strong>ideyaLabs Tech Pvt Ltd</strong> &middot; Multi-Agent Development System &middot; Claude Code v2.1.63 &middot; Sonnet 4.6 &middot; Built by Aman K</div>
+</div>
+</body>
+</html>
