@@ -6,75 +6,117 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Space Grotesk',sans-serif;background:#f8f9fc;color:#1a1a2e;padding:40px 20px}
+
+/* Theme Toggle Button */
+.theme-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:#6c47ff;border:none;border-radius:10px;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 12px rgba(108,71,255,0.3);transition:all 0.3s ease}
+.theme-toggle:hover{transform:scale(1.1);box-shadow:0 6px 16px rgba(108,71,255,0.4)}
+
+/* Dark theme (default) */
+body{font-family:'Space Grotesk',sans-serif;background:#0a0a0f;color:#e8e8f0;padding:40px 20px;transition:background 0.3s ease, color 0.3s ease}
 .page{max-width:1100px;margin:0 auto}
 .header{text-align:center;margin-bottom:50px}
-.badge{display:inline-block;border:1px solid #6c47ff40;background:#6c47ff10;color:#6c47ff;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:16px;font-family:'JetBrains Mono',monospace}
-h1{font-size:36px;font-weight:700;background:linear-gradient(135deg,#1a1a2e,#6c47ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+.badge{display:inline-block;border:1px solid #6c47ff50;color:#a78bfa;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:16px;font-family:'JetBrains Mono',monospace}
+h1{font-size:36px;font-weight:700;background:linear-gradient(135deg,#fff,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
 .header p{color:#6b7280;font-size:14px}
-.stitle{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#9ca3af;margin-bottom:16px;font-family:'JetBrains Mono',monospace}
-.you-do{background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:16px 24px;margin-bottom:30px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.stitle{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#6b7280;margin-bottom:16px;font-family:'JetBrains Mono',monospace}
+.you-do{background:#0f1a2e;border:1px solid #1e3a5f;border-radius:12px;padding:16px 24px;margin-bottom:30px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .you-icon{width:40px;height:40px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.you-text strong{display:block;font-size:13px;color:#1d4ed8;font-weight:600;margin-bottom:3px}
+.you-text strong{display:block;font-size:13px;color:#60a5fa;font-weight:600;margin-bottom:3px}
 .you-text span{font-size:12px;color:#6b7280}
 .steps{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
-.step{background:#dbeafe;border:1px solid #93c5fd;border-radius:8px;padding:6px 12px;font-size:11px;color:#1d4ed8;font-weight:500}
+.step{background:#1e3a5f;border:1px solid #2563eb40;border-radius:8px;padding:6px 12px;font-size:11px;color:#93c5fd;font-weight:500}
 .io-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:30px}
-.io-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px 24px;box-shadow:0 1px 3px #0000000a}
+.io-card{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:20px 24px}
 .io-card.input{border-left:3px solid #6c47ff}
 .io-card.output{border-left:3px solid #10b981}
 .io-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;font-family:'JetBrains Mono',monospace}
 .io-card.input .io-label{color:#6c47ff}
 .io-card.output .io-label{color:#10b981}
-.io-title{font-size:16px;font-weight:600;color:#111827;margin-bottom:6px}
+.io-title{font-size:16px;font-weight:600;color:#fff;margin-bottom:6px}
 .io-desc{font-size:13px;color:#6b7280;line-height:1.5}
-.tag{display:inline-block;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:6px;padding:3px 10px;font-size:11px;color:#6c47ff;margin-top:10px;margin-right:6px;font-family:'JetBrains Mono',monospace}
+.tag{display:inline-block;background:#1e1e2e;border:1px solid #2a2a3e;border-radius:6px;padding:3px 10px;font-size:11px;color:#a78bfa;margin-top:10px;margin-right:6px;font-family:'JetBrains Mono',monospace}
 .agents-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:30px}
-.ac{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;position:relative;box-shadow:0 1px 3px #0000000a}
+.ac{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:16px 18px;position:relative}
 .an{font-size:10px;font-weight:700;letter-spacing:1px;font-family:'JetBrains Mono',monospace;margin-bottom:8px}
-.aname{font-size:13px;font-weight:600;color:#111827;margin-bottom:4px}
-.arole{font-size:11px;color:#9ca3af;margin-bottom:10px}
-.aout{font-size:10px;font-family:'JetBrains Mono',monospace;color:#9ca3af;background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:4px 8px}
+.aname{font-size:13px;font-weight:600;color:#fff;margin-bottom:4px}
+.arole{font-size:11px;color:#6b7280;margin-bottom:10px}
+.aout{font-size:10px;font-family:'JetBrains Mono',monospace;color:#4b5563;background:#0a0a0f;border:1px solid #1e1e2e;border-radius:6px;padding:4px 8px}
 .adot{position:absolute;top:16px;right:16px;width:8px;height:8px;border-radius:50%}
-.a1{border-top:2px solid #f59e0b}.a1 .an{color:#d97706}.a1 .adot{background:#f59e0b}
-.a2{border-top:2px solid #6c47ff}.a2 .an{color:#6c47ff}.a2 .adot{background:#6c47ff}
-.a3{border-top:2px solid #ec4899}.a3 .an{color:#db2777}.a3 .adot{background:#ec4899}
-.a4{border-top:2px solid #3b82f6}.a4 .an{color:#2563eb}.a4 .adot{background:#3b82f6}
-.a5{border-top:2px solid #10b981}.a5 .an{color:#059669}.a5 .adot{background:#10b981}
-.a6{border-top:2px solid #f97316}.a6 .an{color:#ea6d0b}.a6 .adot{background:#f97316}
-.a7{border-top:2px solid #ef4444}.a7 .an{color:#dc2626}.a7 .adot{background:#ef4444}
-.a8{border-top:2px solid #14b8a6}.a8 .an{color:#0d9488}.a8 .adot{background:#14b8a6}
-.apr{border-top:2px solid #8b5cf6}.apr .an{color:#7c3aed}.apr .adot{background:#8b5cf6}
-.flow-container{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;margin-bottom:30px;box-shadow:0 1px 3px #0000000a}
+.a1{border-top:2px solid #f59e0b}.a1 .an{color:#f59e0b}.a1 .adot{background:#f59e0b;box-shadow:0 0 8px #f59e0b80}
+.a2{border-top:2px solid #6c47ff}.a2 .an{color:#6c47ff}.a2 .adot{background:#6c47ff;box-shadow:0 0 8px #6c47ff80}
+.a3{border-top:2px solid #ec4899}.a3 .an{color:#ec4899}.a3 .adot{background:#ec4899;box-shadow:0 0 8px #ec489980}
+.a4{border-top:2px solid #3b82f6}.a4 .an{color:#3b82f6}.a4 .adot{background:#3b82f6;box-shadow:0 0 8px #3b82f680}
+.a5{border-top:2px solid #10b981}.a5 .an{color:#10b981}.a5 .adot{background:#10b981;box-shadow:0 0 8px #10b98180}
+.a6{border-top:2px solid #f97316}.a6 .an{color:#f97316}.a6 .adot{background:#f97316;box-shadow:0 0 8px #f9731680}
+.a7{border-top:2px solid #ef4444}.a7 .an{color:#ef4444}.a7 .adot{background:#ef4444;box-shadow:0 0 8px #ef444480}
+.a8{border-top:2px solid #14b8a6}.a8 .an{color:#14b8a6}.a8 .adot{background:#14b8a6;box-shadow:0 0 8px #14b8a680}
+.apr{border-top:2px solid #8b5cf6}.apr .an{color:#8b5cf6}.apr .adot{background:#8b5cf6;box-shadow:0 0 8px #8b5cf680}
+.flow-container{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
 .flow-row{display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:8px}
-.fb{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;white-space:nowrap}
-.fa{color:#d1d5db;font-size:16px;padding:0 4px}
-.fdiv{border:none;border-top:1px solid #f3f4f6;margin:16px 0}
-.flabel{font-size:10px;color:#9ca3af;font-family:'JetBrains Mono',monospace;margin-bottom:10px;letter-spacing:1px}
+.fb{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;white-space:nowrap}
+.fa{color:#2a2a3e;font-size:16px;padding:0 4px}
+.fdiv{border:none;border-top:1px solid #1e1e2e;margin:16px 0}
+.flabel{font-size:10px;color:#4b5563;font-family:'JetBrains Mono',monospace;margin-bottom:10px;letter-spacing:1px}
 .verdict-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:30px}
 .vc{border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px}
-.vc.approved{background:#f0fdf4;border:1px solid #bbf7d0}
-.vc.fixes{background:#fef2f2;border:1px solid #fecaca}
+.vc.approved{background:#052e16;border:1px solid #14532d}
+.vc.fixes{background:#2d0a0a;border:1px solid #7f1d1d}
 .vi{font-size:22px;flex-shrink:0;margin-top:2px}
 .vt{font-size:13px;font-weight:600;margin-bottom:4px}
-.vc.approved .vt{color:#16a34a}
-.vc.fixes .vt{color:#dc2626}
+.vc.approved .vt{color:#4ade80}
+.vc.fixes .vt{color:#f87171}
 .vs{font-size:11px;color:#6b7280;line-height:1.8}
 .mcp-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:30px}
-.mc{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;text-align:center;box-shadow:0 1px 3px #0000000a}
+.mc{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:16px 18px;text-align:center}
 .mi{font-size:24px;margin-bottom:8px}
-.mn{font-size:13px;font-weight:600;color:#111827;margin-bottom:4px}
+.mn{font-size:13px;font-weight:600;color:#fff;margin-bottom:4px}
 .md{font-size:11px;color:#6b7280;margin-bottom:8px}
-.ms{display:inline-block;background:#f0fdf4;border:1px solid #bbf7d0;color:#16a34a;font-size:10px;font-weight:600;padding:3px 10px;border-radius:10px;font-family:'JetBrains Mono',monospace}
+.ms{display:inline-block;background:#052e16;border:1px solid #14532d;color:#4ade80;font-size:10px;font-weight:600;padding:3px 10px;border-radius:10px;font-family:'JetBrains Mono',monospace}
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:40px}
-.sc{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;text-align:center;box-shadow:0 1px 3px #0000000a}
-.sn{font-size:28px;font-weight:700;background:linear-gradient(135deg,#6c47ff,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+.sc{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:16px;text-align:center}
+.sn{font-size:28px;font-weight:700;background:linear-gradient(135deg,#a78bfa,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
 .sl{font-size:11px;color:#6b7280;line-height:1.4}
-.footer{text-align:center;border-top:1px solid #e5e7eb;padding-top:24px;font-size:11px;color:#9ca3af}
+.footer{text-align:center;border-top:1px solid #1e1e2e;padding-top:24px;font-size:11px;color:#4b5563}
 .footer strong{color:#6b7280}
+
+/* Light theme overrides */
+body.light-theme{background:#f8f9fc;color:#1a1a2e}
+body.light-theme .badge{border:1px solid #6c47ff40;background:#6c47ff10;color:#6c47ff}
+body.light-theme h1{background:linear-gradient(135deg,#1a1a2e,#6c47ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+body.light-theme .stitle{color:#9ca3af}
+body.light-theme .you-do{background:#eff6ff;border:1px solid #bfdbfe}
+body.light-theme .you-text strong{color:#1d4ed8}
+body.light-theme .step{background:#dbeafe;border:1px solid #93c5fd;color:#1d4ed8}
+body.light-theme .io-card{background:#fff;border:1px solid #e5e7eb;box-shadow:0 1px 3px #0000000a}
+body.light-theme .io-title{color:#111827}
+body.light-theme .tag{background:#f3f4f6;border:1px solid #e5e7eb;color:#6c47ff}
+body.light-theme .ac{background:#fff;border:1px solid #e5e7eb;box-shadow:0 1px 3px #0000000a}
+body.light-theme .aname{color:#111827}
+body.light-theme .arole{color:#9ca3af}
+body.light-theme .aout{color:#9ca3af;background:#f9fafb;border:1px solid #e5e7eb}
+body.light-theme .adot{box-shadow:none}
+body.light-theme .flow-container{background:#fff;border:1px solid #e5e7eb;box-shadow:0 1px 3px #0000000a}
+body.light-theme .fb{background:#f9fafb;border:1px solid #e5e7eb}
+body.light-theme .fa{color:#d1d5db}
+body.light-theme .fdiv{border-top:1px solid #f3f4f6}
+body.light-theme .flabel{color:#9ca3af}
+body.light-theme .vc.approved{background:#f0fdf4;border:1px solid #bbf7d0}
+body.light-theme .vc.approved .vt{color:#16a34a}
+body.light-theme .vc.fixes{background:#fef2f2;border:1px solid #fecaca}
+body.light-theme .vc.fixes .vt{color:#dc2626}
+body.light-theme .mc{background:#fff;border:1px solid #e5e7eb;box-shadow:0 1px 3px #0000000a}
+body.light-theme .mn{color:#111827}
+body.light-theme .ms{background:#f0fdf4;border:1px solid #bbf7d0;color:#16a34a}
+body.light-theme .sc{background:#fff;border:1px solid #e5e7eb;box-shadow:0 1px 3px #0000000a}
+body.light-theme .footer{border-top:1px solid #e5e7eb;color:#9ca3af}
+body.light-theme .footer strong{color:#6b7280}
 </style>
 </head>
 <body>
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+  <span id="theme-icon">☀️</span>
+</button>
+
 <div class="page">
 <div class="header">
 <div class="badge">ideyaLabs Tech &middot; Internal Tool</div>
@@ -111,21 +153,21 @@ h1{font-size:36px;font-weight:700;background:linear-gradient(135deg,#1a1a2e,#6c4
 <div class="flow-container">
 <div class="flabel">PIPELINE START</div>
 <div class="flow-row">
-<div class="fb" style="border-color:#6c47ff30;color:#6c47ff;background:#f5f3ff;">./run.sh BOD-123</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#6c47ff30;color:#6c47ff;background:#f5f3ff;">Auto-check codebase-context.md</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#f59e0b30;color:#d97706;background:#fffbeb;">Agent 01 reads Jira</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#ec489930;color:#db2777;background:#fdf2f8;">Agent 03 reads Figma</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#3b82f630;color:#2563eb;background:#eff6ff;">Agent 04 writes code</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#10b98130;color:#059669;background:#f0fdf4;">Agent 05 writes tests</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#f9731630;color:#ea6d0b;background:#fff7ed;">Agent 06 reviews</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#1a1a2e20;color:#1a1a2e;background:#f9fafb;">You read report</div>
+<div class="fb" style="border-color:#6c47ff40;color:#a78bfa;">./run.sh BOD-123</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#6c47ff40;color:#a78bfa;">Auto-check codebase-context.md</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#f59e0b40;color:#fbbf24;">Agent 01 reads Jira</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#ec489940;color:#f472b6;">Agent 03 reads Figma</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#3b82f640;color:#60a5fa;">Agent 04 writes code</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#10b98140;color:#34d399;">Agent 05 writes tests</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#f9731640;color:#fb923c;">Agent 06 reviews</div><div class="fa">&rarr;</div>
+<div class="fb" style="border-color:#fff3;color:#fff;">You read report</div>
 </div>
 <hr class="fdiv">
 <div class="flabel">VERDICT PATHS</div>
 <div class="flow-row">
-<div class="fb" style="border-color:#bbf7d0;color:#16a34a;background:#f0fdf4;">&#10003; APPROVED &rarr; git commit &rarr; Agent 08 docs &rarr; Done</div>
+<div class="fb" style="border-color:#14532d;color:#4ade80;">&#10003; APPROVED &rarr; git commit &rarr; Agent 08 docs &rarr; Done</div>
 <div style="width:20px"></div>
-<div class="fb" style="border-color:#fecaca;color:#dc2626;background:#fef2f2;">&#10007; NEEDS FIXES &rarr; Agent 07 fixes &rarr; Agent 06 re-reviews &rarr; loop until APPROVED</div>
+<div class="fb" style="border-color:#7f1d1d;color:#f87171;">&#10007; NEEDS FIXES &rarr; Agent 07 fixes &rarr; Agent 06 re-reviews &rarr; loop until APPROVED</div>
 </div>
 </div>
 
@@ -151,5 +193,35 @@ h1{font-size:36px;font-weight:700;background:linear-gradient(135deg,#1a1a2e,#6c4
 
 <div class="footer"><strong>ideyaLabs Tech Pvt Ltd</strong> &middot; Multi-Agent Development System &middot; Claude Code v2.1.63 &middot; Sonnet 4.6 &middot; Built by Aman K</div>
 </div>
+
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const icon = document.getElementById('theme-icon');
+  
+  if (body.classList.contains('light-theme')) {
+    body.classList.remove('light-theme');
+    icon.textContent = '☀️';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.classList.add('light-theme');
+    icon.textContent = '🌙';
+    localStorage.setItem('theme', 'light');
+  }
+}
+
+// Load saved theme on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  const icon = document.getElementById('theme-icon');
+  
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+    icon.textContent = '🌙';
+  } else {
+    icon.textContent = '☀️';
+  }
+});
+</script>
 </body>
 </html>
