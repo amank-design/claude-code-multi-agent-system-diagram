@@ -7,9 +7,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 
-/* Theme Toggle Button */
-.theme-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:#6c47ff;border:none;border-radius:10px;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 12px rgba(108,71,255,0.3);transition:all 0.3s ease}
-.theme-toggle:hover{transform:scale(1.1);box-shadow:0 6px 16px rgba(108,71,255,0.4)}
+/* Navigation Bar */
+.navbar{position:sticky;top:0;z-index:999;background:rgba(10,10,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid #1e1e2e;padding:12px 0;margin-bottom:30px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+.navbar-container{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-links{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-item{color:#9ca3af;font-size:13px;font-weight:500;white-space:nowrap;cursor:pointer;padding:6px 12px;border-radius:6px;transition:all 0.2s ease;text-decoration:none}
+.nav-item:hover{color:#fff;background:#1e1e2e}
+.nav-item.active{color:#6c47ff;background:#1e1e2e}
+.nav-theme-toggle{background:#6c47ff;border:none;border-radius:8px;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.3s ease;flex-shrink:0}
+.nav-theme-toggle:hover{transform:scale(1.1);box-shadow:0 4px 12px rgba(108,71,255,0.4)}
 
 /* Dark theme (default) */
 body{font-family:'Space Grotesk',sans-serif;background:#0a0a0f;color:#e8e8f0;padding:40px 20px;transition:background 0.3s ease, color 0.3s ease}
@@ -54,7 +61,7 @@ h1{font-size:36px;font-weight:700;background:linear-gradient(135deg,#fff,#a78bfa
 .flow-container{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
 .flow-row{display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:8px}
 .fb{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;white-space:nowrap}
-.fa{color:#2a2a3e;font-size:16px;padding:0 4px}
+.fa{color:#9ca3af;font-size:18px;padding:0 6px;font-weight:700}
 .fdiv{border:none;border-top:1px solid #1e1e2e;margin:16px 0}
 .flabel{font-size:10px;color:#4b5563;font-family:'JetBrains Mono',monospace;margin-bottom:10px;letter-spacing:1px}
 .verdict-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:30px}
@@ -91,6 +98,10 @@ h1{font-size:36px;font-weight:700;background:linear-gradient(135deg,#fff,#a78bfa
 
 /* Light theme overrides */
 body.light-theme{background:#f8f9fc;color:#1a1a2e}
+body.light-theme .navbar{background:rgba(255,255,255,0.95);border-bottom:1px solid #e5e7eb;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+body.light-theme .nav-item{color:#6b7280}
+body.light-theme .nav-item:hover{color:#111827;background:#f3f4f6}
+body.light-theme .nav-item.active{color:#6c47ff;background:#f3f4f6}
 body.light-theme .badge{border:1px solid #6c47ff40;background:#6c47ff10;color:#6c47ff}
 body.light-theme h1{background:linear-gradient(135deg,#1a1a2e,#6c47ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 body.light-theme .stitle{color:#9ca3af}
@@ -107,7 +118,7 @@ body.light-theme .aout{color:#9ca3af;background:#f9fafb;border:1px solid #e5e7eb
 body.light-theme .adot{box-shadow:none}
 body.light-theme .flow-container{background:#fff;border:1px solid #e5e7eb;box-shadow:0 1px 3px #0000000a}
 body.light-theme .fb{background:#f9fafb;border:1px solid #e5e7eb}
-body.light-theme .fa{color:#d1d5db}
+body.light-theme .fa{color:#6b7280}
 body.light-theme .fdiv{border-top:1px solid #f3f4f6}
 body.light-theme .flabel{color:#9ca3af}
 body.light-theme .vc.approved{background:#f0fdf4;border:1px solid #bbf7d0}
@@ -126,12 +137,285 @@ body.light-theme .lang-text h3{color:#1a1a2e;background:linear-gradient(135deg,#
 body.light-theme .lang-text p{color:#6b7280}
 body.light-theme .lang-text p strong{color:#1a1a2e}
 body.light-theme .lang-highlight{color:#6c47ff;border-top:1px solid #e0d7ff}
+
+/* Overview Section */
+.overview-section{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
+.overview-section p{color:#9ca3af;font-size:14px;line-height:1.7;margin-bottom:16px}
+.overview-section p:last-of-type{margin-bottom:0}
+.overview-section strong{color:#fff;font-weight:600}
+.warning-note{background:#2d1a0a;border:1px solid #7f4a1d;border-radius:8px;padding:14px 18px;margin-top:16px;display:flex;gap:12px;align-items:flex-start}
+.warning-note-icon{font-size:20px;flex-shrink:0}
+.warning-note-text{font-size:13px;color:#fbbf24;line-height:1.6}
+.warning-note-text strong{color:#fff}
+
+/* Agents Detail Table */
+.agents-detail-section{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
+.agents-detail-table{width:100%;border-collapse:collapse;font-size:13px}
+.agents-detail-table th{padding:10px 14px;background:#0a0a0f;border:1px solid #1e1e2e;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.5px}
+.agents-detail-table td{padding:10px 14px;border:1px solid #1e1e2e;vertical-align:top;color:#9ca3af}
+.agent-badge{display:inline-block;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace}
+.a1-badge{background:#fffae6;color:#974f0c}
+.a2-badge{background:#eae6ff;color:#403294}
+.a3-badge{background:#fce4ec;color:#880e4f}
+.a4-badge{background:#e3f2fd;color:#0d47a1}
+.a5-badge{background:#e8f5e9;color:#1b5e20}
+.a6-badge{background:#fff3e0;color:#bf360c}
+.a7-badge{background:#ffebee;color:#b71c1c}
+.a8-badge{background:#e0f2f1;color:#004d40}
+.apr-badge{background:#f3e5f5;color:#4a148c}
+.output-code{background:#0a0a0f;color:#a78bfa;padding:2px 8px;border-radius:3px;font-size:11px;font-family:'JetBrains Mono',monospace}
+
+/* Pipeline Section */
+.pipeline-section{margin-bottom:30px}
+.pipeline-section h3{color:#fff;font-size:16px;font-weight:600;margin:24px 0 12px}
+.pipeline-section h3:first-child{margin-top:0}
+.flow-container{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:20px}
+
+/* Comparison Table */
+.comparison-section{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
+.comparison-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:16px}
+.comparison-table th{padding:12px 16px;text-align:left;font-weight:600;font-size:12px;border:1px solid #1e1e2e}
+.comparison-table th:first-child{background:#0a0a0f;color:#e8e8f0}
+.comparison-table th.our-col{background:#6c47ff;color:#fff}
+.comparison-table th.cursor-col{background:#2a2a3e;color:#9ca3af}
+.comparison-table td{padding:10px 16px;border:1px solid #1e1e2e;vertical-align:middle}
+.comparison-table td:first-child{background:#0a0a0f;color:#e8e8f0;font-weight:500}
+.comparison-table td.our-col{background:#13131a;text-align:center}
+.comparison-table td.cursor-col{background:#13131a;text-align:center}
+.comparison-table .chk{color:#10b981;font-weight:700;font-size:15px}
+.comparison-table .crs{color:#ef4444;font-weight:700;font-size:15px}
+.comparison-note{display:flex;gap:12px;align-items:flex-start;padding:14px 18px;background:#0f1a2e;border:1px solid #1e3a5f;border-radius:8px;margin-top:16px}
+.comparison-icon{font-size:20px;flex-shrink:0}
+.comparison-text{font-size:13px;color:#93c5fd;line-height:1.6}
+.comparison-text strong{color:#fff}
+
+/* Workflow Section */
+.workflow-section{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
+.workflow-section h3{color:#fff;font-size:16px;font-weight:600;margin-bottom:12px;margin-top:20px}
+.workflow-section h3:first-child{margin-top:0}
+
+/* Prerequisites Section */
+.prereq-section{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
+.prereq-section p{color:#9ca3af;margin-bottom:16px}
+.prereq-table{width:100%;border-collapse:collapse;font-size:13px}
+.prereq-table th{padding:10px 14px;background:#0a0a0f;border:1px solid #1e1e2e;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase}
+.prereq-table td{padding:10px 14px;border:1px solid #1e1e2e;color:#9ca3af}
+.badge-req{display:inline-block;background:#052e16;border:1px solid #14532d;color:#4ade80;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px}
+.badge-rec{display:inline-block;background:#2d1a0a;border:1px solid #7f4a1d;color:#fbbf24;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px}
+.badge-opt{display:inline-block;background:#1e1e2e;border:1px solid #2a2a3e;color:#9ca3af;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px}
+
+/* Installation Section */
+.install-section{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
+.install-section h3{color:#fff;font-size:16px;font-weight:600;margin-bottom:12px;margin-top:24px}
+.install-section h3:first-child{margin-top:0}
+.install-section p{color:#9ca3af;margin:12px 0}
+.inline-code{background:#0a0a0f;color:#a78bfa;padding:2px 8px;border-radius:4px;font-size:11px;font-family:'JetBrains Mono',monospace}
+.code-block{background:#0a0a0f;color:#b3f5ff;font-family:'JetBrains Mono',monospace;font-size:12px;border-radius:6px;padding:16px;line-height:1.8;overflow-x:auto;border:1px solid #1e1e2e;margin:12px 0}
+.code-block .comment{color:#6b7280}
+.code-block .cmd{color:#79e2f2}
+.code-block .ok{color:#57d9a3}
+.note-box{background:#0f1a2e;border:1px solid #1e3a5f;border-radius:8px;padding:14px 18px;margin:16px 0;display:flex;gap:12px;align-items:flex-start}
+.note-icon{font-size:20px;flex-shrink:0}
+.note-text{font-size:13px;color:#93c5fd;line-height:1.6}
+.note-text strong{color:#fff}
+
+/* Scripts Reference Section */
+.scripts-ref-section{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
+.scripts-ref-section p{color:#9ca3af;margin-bottom:16px}
+.scripts-ref-section h3{color:#fff;font-size:16px;font-weight:600;margin:24px 0 12px}
+.scripts-ref-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:16px}
+.scripts-ref-table th{padding:10px 14px;background:#0a0a0f;border:1px solid #1e1e2e;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase}
+.scripts-ref-table td{padding:10px 14px;border:1px solid #1e1e2e;color:#9ca3af;vertical-align:top}
+.context-table{width:100%;border-collapse:collapse;font-size:13px}
+.context-table th{padding:10px 14px;background:#0a0a0f;border:1px solid #1e1e2e;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase}
+.context-table td{padding:10px 14px;border:1px solid #1e1e2e;color:#9ca3af;vertical-align:top}
+
+/* Sample Section */
+.sample-section{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
+.sample-section p{color:#9ca3af;margin-bottom:16px}
+.verdict-fail{color:#ff8f73}
+
+/* Security Section */
+.security-section{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
+.security-section p{color:#9ca3af;margin-bottom:16px}
+.security-section h3{color:#fff;font-size:16px;font-weight:600;margin:24px 0 12px}
+.security-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:16px}
+.security-table th{padding:10px 14px;background:#0a0a0f;border:1px solid #1e1e2e;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase}
+.security-table td{padding:10px 14px;border:1px solid #1e1e2e;color:#9ca3af}
+.warning-box{background:#2d0a0a;border:1px solid #7f1d1d;border-radius:8px;padding:14px 18px;margin:16px 0;display:flex;gap:12px;align-items:flex-start}
+.warning-icon{font-size:20px;flex-shrink:0}
+.warning-text{font-size:13px;color:#f87171;line-height:1.6}
+.warning-text strong{color:#fff}
+
+/* Onboarding Section */
+.onboarding-section{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
+.onboarding-section p{color:#9ca3af;margin-bottom:16px}
+.onboarding-section h3{color:#fff;font-size:16px;font-weight:600;margin:24px 0 12px}
+.onboarding-section h3:first-of-type{margin-top:0}
+.onboarding-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.onboard-step{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px;padding:16px;text-align:center}
+.step-num{font-size:24px;font-weight:700;color:#6c47ff;margin-bottom:8px}
+.step-label{font-size:13px;font-weight:600;color:#fff;margin-bottom:6px}
+.step-sub{font-size:11px;color:#6b7280;font-family:'JetBrains Mono',monospace}
+.fail{color:#ff8f73}
+
+/* Limitations Section */
+.limitations-section{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
+.limitations-section p{color:#9ca3af;margin-bottom:16px}
+.limits-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.limits-card{border-radius:8px;padding:16px 20px}
+.limits-card.good{background:#052e16;border:1px solid #14532d}
+.limits-card.bad{background:#2d0a0a;border:1px solid #7f1d1d}
+.limits-header{font-size:14px;font-weight:700;margin-bottom:12px}
+.limits-card.good .limits-header{color:#4ade80}
+.limits-card.bad .limits-header{color:#f87171}
+.limits-content{font-size:12px;color:#9ca3af;line-height:2}
+
+/* Troubleshoot Section */
+.troubleshoot-section{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
+.troubleshoot-table{width:100%;border-collapse:collapse;font-size:13px}
+.troubleshoot-table th{padding:10px 14px;background:#0a0a0f;border:1px solid #1e1e2e;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase}
+.troubleshoot-table td{padding:10px 14px;border:1px solid #1e1e2e;color:#9ca3af;vertical-align:top}
+
+/* FAQ Section */
+.faq-section{background:#13131a;border:1px solid #1e1e2e;border-radius:12px;padding:24px;margin-bottom:30px}
+.faq-section h3{color:#fff;font-size:15px;font-weight:600;margin:20px 0 10px}
+.faq-section h3:first-child{margin-top:0}
+.faq-section p{color:#9ca3af;font-size:13px;line-height:1.7;margin-bottom:16px}
+
+/* Light theme overrides for new sections */
+body.light-theme .comparison-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .comparison-table th{border:1px solid #e5e7eb}
+body.light-theme .comparison-table th:first-child{background:#f9fafb;color:#111827}
+body.light-theme .comparison-table td{border:1px solid #e5e7eb}
+body.light-theme .comparison-table td:first-child{background:#f9fafb;color:#111827}
+body.light-theme .comparison-table td.our-col{background:#fff}
+body.light-theme .comparison-table td.cursor-col{background:#fff}
+body.light-theme .comparison-note{color:#6b7280;background:#eff6ff;border-color:#3b82f6}
+body.light-theme .scripts-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .scripts-table th{background:#f9fafb;border:1px solid #e5e7eb}
+body.light-theme .scripts-table td{border:1px solid #e5e7eb;color:#6b7280}
+body.light-theme .scripts-table code{background:#f9fafb;color:#6c47ff}
+body.light-theme .setup-step{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .setup-content h4{color:#111827}
+body.light-theme .code-block{background:#f9fafb;color:#1a1a2e;border:1px solid #e5e7eb}
+body.light-theme .code-block .comment{color:#9ca3af}
+body.light-theme .security-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .security-section p{color:#6b7280}
+body.light-theme .security-table th{background:#f9fafb;border:1px solid #e5e7eb}
+body.light-theme .security-table td{border:1px solid #e5e7eb;color:#6b7280}
+body.light-theme .warning-box{background:#fef2f2;border:1px solid #fecaca}
+body.light-theme .warning-text{color:#dc2626}
+body.light-theme .warning-text strong{color:#7f1d1d}
+body.light-theme .troubleshooting-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .troubleshooting-table th{background:#f9fafb;border:1px solid #e5e7eb}
+body.light-theme .troubleshooting-table td{border:1px solid #e5e7eb;color:#6b7280}
+body.light-theme .troubleshooting-table code{background:#f9fafb;color:#6c47ff}
+
+/* Light theme - New sections */
+body.light-theme .overview-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .overview-section p{color:#6b7280}
+body.light-theme .overview-section strong{color:#111827}
+body.light-theme .warning-note{background:#fffbeb;border:1px solid #fde68a}
+body.light-theme .warning-note-text{color:#d97706}
+body.light-theme .warning-note-text strong{color:#7c2d12}
+body.light-theme .agents-detail-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .agents-detail-table th{background:#f9fafb;border:1px solid #e5e7eb}
+body.light-theme .agents-detail-table td{border:1px solid #e5e7eb;color:#6b7280}
+body.light-theme .output-code{background:#f9fafb;color:#6c47ff}
+body.light-theme .pipeline-section h3{color:#111827}
+body.light-theme .flow-container{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .comparison-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .comparison-table th{border:1px solid #e5e7eb}
+body.light-theme .comparison-table th:first-child{background:#f9fafb;color:#111827}
+body.light-theme .comparison-table td{border:1px solid #e5e7eb}
+body.light-theme .comparison-table td:first-child{background:#f9fafb;color:#111827}
+body.light-theme .comparison-table td.our-col{background:#fff}
+body.light-theme .comparison-table td.cursor-col{background:#fff}
+body.light-theme .comparison-note{background:#eff6ff;border:1px solid #bfdbfe}
+body.light-theme .comparison-text{color:#1d4ed8}
+body.light-theme .comparison-text strong{color:#1a1a2e}
+body.light-theme .workflow-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .workflow-section h3{color:#111827}
+body.light-theme .prereq-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .prereq-section p{color:#6b7280}
+body.light-theme .prereq-table th{background:#f9fafb;border:1px solid #e5e7eb}
+body.light-theme .prereq-table td{border:1px solid #e5e7eb;color:#6b7280}
+body.light-theme .badge-req{background:#f0fdf4;border:1px solid #bbf7d0;color:#16a34a}
+body.light-theme .badge-rec{background:#fffbeb;border:1px solid #fde68a;color:#d97706}
+body.light-theme .badge-opt{background:#f3f4f6;border:1px solid #e5e7eb;color:#6b7280}
+body.light-theme .install-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .install-section h3{color:#111827}
+body.light-theme .install-section p{color:#6b7280}
+body.light-theme .inline-code{background:#f9fafb;color:#6c47ff}
+body.light-theme .code-block{background:#f9fafb;color:#1a1a2e;border:1px solid #e5e7eb}
+body.light-theme .code-block .comment{color:#9ca3af}
+body.light-theme .code-block .cmd{color:#2563eb}
+body.light-theme .code-block .ok{color:#16a34a}
+body.light-theme .note-box{background:#eff6ff;border:1px solid #bfdbfe}
+body.light-theme .note-text{color:#1d4ed8}
+body.light-theme .note-text strong{color:#1a1a2e}
+body.light-theme .scripts-ref-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .scripts-ref-section p{color:#6b7280}
+body.light-theme .scripts-ref-section h3{color:#111827}
+body.light-theme .scripts-ref-table th{background:#f9fafb;border:1px solid #e5e7eb}
+body.light-theme .scripts-ref-table td{border:1px solid #e5e7eb;color:#6b7280}
+body.light-theme .context-table th{background:#f9fafb;border:1px solid #e5e7eb}
+body.light-theme .context-table td{border:1px solid #e5e7eb;color:#6b7280}
+body.light-theme .sample-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .sample-section p{color:#6b7280}
+body.light-theme .verdict-fail{color:#dc2626}
+body.light-theme .security-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .security-section p{color:#6b7280}
+body.light-theme .security-section h3{color:#111827}
+body.light-theme .security-table th{background:#f9fafb;border:1px solid #e5e7eb}
+body.light-theme .security-table td{border:1px solid #e5e7eb;color:#6b7280}
+body.light-theme .warning-box{background:#fef2f2;border:1px solid #fecaca}
+body.light-theme .warning-text{color:#dc2626}
+body.light-theme .warning-text strong{color:#7f1d1d}
+body.light-theme .onboarding-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .onboarding-section p{color:#6b7280}
+body.light-theme .onboarding-section h3{color:#111827}
+body.light-theme .onboard-step{background:#f9fafb;border:1px solid #e5e7eb}
+body.light-theme .step-label{color:#111827}
+body.light-theme .step-sub{color:#9ca3af}
+body.light-theme .fail{color:#dc2626}
+body.light-theme .limitations-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .limitations-section p{color:#6b7280}
+body.light-theme .limits-card.good{background:#f0fdf4;border:1px solid #bbf7d0}
+body.light-theme .limits-card.bad{background:#fef2f2;border:1px solid #fecaca}
+body.light-theme .limits-card.good .limits-header{color:#16a34a}
+body.light-theme .limits-card.bad .limits-header{color:#dc2626}
+body.light-theme .limits-content{color:#6b7280}
+body.light-theme .troubleshoot-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .troubleshoot-table th{background:#f9fafb;border:1px solid #e5e7eb}
+body.light-theme .troubleshoot-table td{border:1px solid #e5e7eb;color:#6b7280}
+body.light-theme .faq-section{background:#fff;border:1px solid #e5e7eb}
+body.light-theme .faq-section h3{color:#111827}
+body.light-theme .faq-section p{color:#6b7280}
 </style>
 </head>
 <body>
-<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-  <span id="theme-icon">☀️</span>
-</button>
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="nav-links">
+      <a class="nav-item" href="#overview">Overview</a>
+      <a class="nav-item" href="#what-you-do">What You Do</a>
+      <a class="nav-item" href="#agents">Agents</a>
+      <a class="nav-item" href="#pipeline">Pipeline</a>
+      <a class="nav-item" href="#comparison">vs Cursor</a>
+      <a class="nav-item" href="#workflow">Workflow</a>
+      <a class="nav-item" href="#setup">Setup</a>
+      <a class="nav-item" href="#scripts">Scripts</a>
+      <a class="nav-item" href="#security">Security</a>
+      <a class="nav-item" href="#troubleshooting">Troubleshooting</a>
+      <a class="nav-item" href="#faq">FAQ</a>
+    </div>
+    <button class="nav-theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <span id="theme-icon">☀️</span>
+    </button>
+  </div>
+</nav>
 
 <div class="page">
 <div class="header">
@@ -140,7 +424,17 @@ body.light-theme .lang-highlight{color:#6c47ff;border-top:1px solid #e0d7ff}
 <p>End-to-end automated pipeline from Jira ticket to reviewed, tested, production-ready code</p>
 </div>
 
-<div class="stitle">What You Do &mdash; 4 Steps Only</div>
+<div class="stitle" id="overview">Overview</div>
+<div class="overview-section">
+<p>The Multi-Agent Development System is an internal engineering tool built on <strong>Claude Code (Anthropic)</strong>. It consists of 9 specialized AI agents that work in a pipeline — from reading Jira tickets and Figma designs, to writing code, tests, reviewing, fixing bugs, and updating documentation.</p>
+<p>The system automates the repetitive parts of the development workflow so engineers can focus on <strong>architecture, product thinking, and quality control</strong> rather than implementation details.</p>
+<div class="warning-note">
+<div class="warning-note-icon">⚠️</div>
+<div class="warning-note-text"><strong>Note:</strong> This system does not replace engineers. It handles 70-80% of implementation work automatically. Engineers are still responsible for reviewing the output, ensuring business logic is correct, and making architectural decisions.</div>
+</div>
+</div>
+
+<div class="stitle" id="what-you-do">What You Do &mdash; 4 Steps Only</div>
 <div class="you-do">
 <div class="you-icon">&#x1F464;</div>
 <div class="you-text"><strong>Your entire involvement in the process</strong><span>Everything else is handled automatically by the agent pipeline</span></div>
@@ -165,38 +459,56 @@ body.light-theme .lang-highlight{color:#6c47ff;border-top:1px solid #e0d7ff}
 </div>
 </div>
 
-<div class="stitle">The Agent Pipeline &mdash; 9 Specialized AI Agents</div>
-<div class="agents-grid">
-<div class="ac a1"><div class="adot"></div><div class="an">AGENT 01</div><div class="aname">Task Breakdown</div><div class="arole">Tech Lead</div><div class="aout">&rarr; subtasks.json + figma-url.txt</div></div>
-<div class="ac a2"><div class="adot"></div><div class="an">AGENT 02</div><div class="aname">Codebase Understanding</div><div class="arole">Software Architect</div><div class="aout">&rarr; codebase-context.md (once + incremental)</div></div>
-<div class="ac a3"><div class="adot"></div><div class="an">AGENT 03</div><div class="aname">Figma Design</div><div class="arole">UI/UX Analyst</div><div class="aout">&rarr; figma-specs.md</div></div>
-<div class="ac a4"><div class="adot"></div><div class="an">AGENT 04</div><div class="aname">Development</div><div class="arole">Senior Developer</div><div class="aout">&rarr; Feature code + changes.md</div></div>
-<div class="ac a5"><div class="adot"></div><div class="an">AGENT 05</div><div class="aname">Testing</div><div class="arole">QA Engineer</div><div class="aout">&rarr; Unit + integration tests (80%+ coverage)</div></div>
-<div class="ac a6"><div class="adot"></div><div class="an">AGENT 06</div><div class="aname">Code Reviewer</div><div class="arole">Senior Reviewer</div><div class="aout">&rarr; review-report.md + VERDICT</div></div>
-<div class="ac a7"><div class="adot"></div><div class="an">AGENT 07</div><div class="aname">Bug Fix</div><div class="arole">Bug Fix Engineer</div><div class="aout">&rarr; Fixed code (only if NEEDS FIXES)</div></div>
-<div class="ac a8"><div class="adot"></div><div class="an">AGENT 08</div><div class="aname">Documentation</div><div class="arole">Technical Writer</div><div class="aout">&rarr; README + JSDoc + CHANGELOG</div></div>
-<div class="ac apr"><div class="adot"></div><div class="an">PR REVIEWER</div><div class="aname">Pull Request Review</div><div class="arole">Mode 2 &mdash; PR Review only</div><div class="aout">&rarr; PR review-report.md + VERDICT</div></div>
+<div class="stitle" id="agents">The 9 Specialized Agents</div>
+<div class="agents-detail-section">
+<table class="agents-detail-table">
+<thead><tr><th>Agent</th><th>Role</th><th>What It Does</th><th>Output</th><th>Mode</th></tr></thead>
+<tbody>
+<tr><td><span class="agent-badge a1-badge">AGENT 01</span></td><td>Task Breakdown</td><td>Reads Jira ticket via API, extracts requirements and AC, breaks work into subtasks</td><td><code class="output-code">subtasks.json</code></td><td>Mode 1</td></tr>
+<tr><td><span class="agent-badge a2-badge">AGENT 02</span></td><td>Codebase Understanding</td><td>Scans entire project, maps architecture and patterns. Runs once then updates incrementally</td><td><code class="output-code">codebase-context.md</code></td><td>Auto</td></tr>
+<tr><td><span class="agent-badge a3-badge">AGENT 03</span></td><td>Figma Design</td><td>Reads Figma via MCP, extracts colors, typography, spacing, components. Skips if no Figma link</td><td><code class="output-code">figma-specs.md</code></td><td>Mode 1</td></tr>
+<tr><td><span class="agent-badge a4-badge">AGENT 04</span></td><td>Development</td><td>Writes feature code using context from Agents 01-03. Follows existing patterns exactly</td><td><code class="output-code">changes.md</code></td><td>Mode 1</td></tr>
+<tr><td><span class="agent-badge a5-badge">AGENT 05</span></td><td>Testing</td><td>Writes unit and integration tests for all new code. Aims for 80%+ coverage</td><td>Test files</td><td>Mode 1</td></tr>
+<tr><td><span class="agent-badge a6-badge">AGENT 06</span></td><td>Code Reviewer</td><td>Reviews for bugs, security, performance, Figma compliance, test coverage. Issues VERDICT</td><td><code class="output-code">review-report.md</code></td><td>Mode 1</td></tr>
+<tr><td><span class="agent-badge a7-badge">AGENT 07</span></td><td>Bug Fix</td><td>Only activates on NEEDS FIXES. Fixes HIGH severity first, then MEDIUM. Triggers re-review</td><td>Fixed code</td><td>On fail only</td></tr>
+<tr><td><span class="agent-badge a8-badge">AGENT 08</span></td><td>Documentation</td><td>Only runs after human approval. Updates README, JSDoc, CHANGELOG, and API docs</td><td>Updated docs</td><td>Post-approval</td></tr>
+<tr><td><span class="agent-badge apr-badge">PR REVIEWER</span></td><td>PR Review</td><td>Reviews GitHub PRs using codebase context. Issues APPROVED / REQUEST CHANGES verdict</td><td><code class="output-code">review-report.md</code></td><td>Mode 2</td></tr>
+</tbody>
+</table>
 </div>
 
-<div class="stitle">Pipeline Flow &mdash; Mode 1 (Feature Development)</div>
+<div class="stitle" id="pipeline">Pipeline Flow</div>
+<div class="pipeline-section">
+<h3>Mode 1 — Feature Development</h3>
 <div class="flow-container">
-<div class="flabel">PIPELINE START</div>
+<div class="flabel">PIPELINE EXECUTION ORDER</div>
 <div class="flow-row">
-<div class="fb" style="border-color:#6c47ff40;color:#a78bfa;">./run.sh BOD-123</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#6c47ff40;color:#a78bfa;">Auto-check codebase-context.md</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#f59e0b40;color:#fbbf24;">Agent 01 reads Jira</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#ec489940;color:#f472b6;">Agent 03 reads Figma</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#3b82f640;color:#60a5fa;">Agent 04 writes code</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#10b98140;color:#34d399;">Agent 05 writes tests</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#f9731640;color:#fb923c;">Agent 06 reviews</div><div class="fa">&rarr;</div>
-<div class="fb" style="border-color:#fff3;color:#fff;">You read report</div>
+<div class="fb" style="background:#eae6ff;border-color:#6554c0;color:#403294">./run.sh BOD-123</div><div class="fa">→</div>
+<div class="fb" style="background:#eae6ff;border-color:#6554c0;color:#403294">Auto-check codebase-context.md</div><div class="fa">→</div>
+<div class="fb" style="background:#fffae6;border-color:#f59e0b;color:#974f0c">Agent 01: Read Jira</div><div class="fa">→</div>
+<div class="fb" style="background:#fce4ec;border-color:#ec4899;color:#880e4f">Agent 03: Read Figma</div><div class="fa">→</div>
+<div class="fb" style="background:#e3f2fd;border-color:#3b82f6;color:#0d47a1">Agent 04: Write Code</div><div class="fa">→</div>
+<div class="fb" style="background:#e8f5e9;border-color:#10b981;color:#1b5e20">Agent 05: Write Tests</div><div class="fa">→</div>
+<div class="fb" style="background:#fff3e0;border-color:#f97316;color:#bf360c">Agent 06: Review</div><div class="fa">→</div>
+<div class="fb" style="background:#f4f5f7;border-color:#dfe1e6;color:#172b4d">You Read Report</div>
 </div>
 <hr class="fdiv">
 <div class="flabel">VERDICT PATHS</div>
 <div class="flow-row">
-<div class="fb" style="border-color:#14532d;color:#4ade80;">&#10003; APPROVED &rarr; git commit &rarr; Agent 08 docs &rarr; Done</div>
-<div style="width:20px"></div>
-<div class="fb" style="border-color:#7f1d1d;color:#f87171;">&#10007; NEEDS FIXES &rarr; Agent 07 fixes &rarr; Agent 06 re-reviews &rarr; loop until APPROVED</div>
+<div class="fb" style="background:#e3fcef;border-color:#57d9a3;color:#006644">✓ APPROVED → git commit → Agent 08 docs → Done</div>
+<div style="width:16px"></div>
+<div class="fb" style="background:#ffebe6;border-color:#ff8f73;color:#bf2600">✗ NEEDS FIXES → Agent 07 fixes → Agent 06 re-reviews → loop until APPROVED</div>
+</div>
+</div>
+
+<h3>Mode 2 — PR Review</h3>
+<div class="flow-container">
+<div class="flow-row">
+<div class="fb" style="background:#eae6ff;border-color:#6554c0;color:#403294">./review-pr.sh [PR-URL]</div><div class="fa">→</div>
+<div class="fb" style="background:#f3e5f5;border-color:#8b5cf6;color:#4a148c">PR Reviewer: Fetch + Review PR</div><div class="fa">→</div>
+<div class="fb" style="background:#f4f5f7;border-color:#dfe1e6;color:#172b4d">You Read Report</div><div class="fa">→</div>
+<div class="fb" style="background:#f4f5f7;border-color:#dfe1e6;color:#172b4d">Approve / Request Changes on GitHub</div>
+</div>
 </div>
 </div>
 
@@ -220,10 +532,422 @@ body.light-theme .lang-highlight{color:#6c47ff;border-top:1px solid #e0d7ff}
 <div class="sc"><div class="sn">9</div><div class="sl">Specialized AI agents in the pipeline</div></div>
 </div>
 
+<div class="stitle" id="comparison">This System vs Cursor IDE</div>
+<div class="comparison-section">
+<table class="comparison-table">
+<thead>
+<tr><th>Feature</th><th class="our-col">This System</th><th class="cursor-col">Cursor IDE</th></tr>
+</thead>
+<tbody>
+<tr><td>Works from Jira ticket automatically</td><td class="our-col"><span class="chk">✓</span> Fully automatic</td><td class="cursor-col"><span class="crs">✗</span> Manual only</td></tr>
+<tr><td>Reads Figma designs automatically</td><td class="our-col"><span class="chk">✓</span> Via MCP</td><td class="cursor-col"><span class="crs">✗</span> You describe it</td></tr>
+<tr><td>Writes tests automatically</td><td class="our-col"><span class="chk">✓</span> Always, 80%+ coverage</td><td class="cursor-col"><span class="crs">✗</span> You ask it to</td></tr>
+<tr><td>Reviews own code</td><td class="our-col"><span class="chk">✓</span> Automatic review</td><td class="cursor-col"><span class="crs">✗</span> You review</td></tr>
+<tr><td>Fixes own bugs automatically</td><td class="our-col"><span class="chk">✓</span> Auto fix loop</td><td class="cursor-col"><span class="crs">✗</span> You fix manually</td></tr>
+<tr><td>Updates documentation</td><td class="our-col"><span class="chk">✓</span> After every commit</td><td class="cursor-col"><span class="crs">✗</span> You write it</td></tr>
+<tr><td>Reviews GitHub PRs automatically</td><td class="our-col"><span class="chk">✓</span> Full PR review mode</td><td class="cursor-col"><span class="crs">✗</span> Not built in</td></tr>
+<tr><td>Understands full codebase context</td><td class="our-col"><span class="chk">✓</span> codebase-context.md</td><td class="cursor-col">⚠️ Limited context</td></tr>
+<tr><td>Human steps required</td><td class="our-col"><span class="chk">✓</span> 4 steps only</td><td class="cursor-col"><span class="crs">✗</span> Every step</td></tr>
+<tr><td>Speed improvement estimate</td><td class="our-col"><strong>70-80%</strong></td><td class="cursor-col"><strong>30-40%</strong></td></tr>
+</tbody>
+</table>
+<div class="comparison-note">
+<div class="comparison-icon">💡</div>
+<div class="comparison-text"><strong>One line summary:</strong> Cursor makes one developer faster. This system makes the entire development workflow autonomous. They complement each other — Cursor for quick experiments, this system for sprint tickets.</div>
+</div>
+</div>
+
+<div class="stitle" id="workflow">Daily Workflow Quick Reference</div>
+<div class="workflow-section">
+<h3>Building a Feature</h3>
+<pre class="code-block"><span class="comment"># Step 1 — Run pipeline with your Jira ticket</span>
+<span class="cmd">./run.sh BOD-123</span>
+
+<span class="comment"># Step 2 — Wait for agents, then read report</span>
+<span class="cmd">cat review-report.md</span>
+
+<span class="comment"># Step 3a — If APPROVED</span>
+<span class="ok">git add . && git commit -m "feat: BOD-123" && git push</span>
+<span class="cmd">./docs.sh</span>
+
+<span class="comment"># Step 3b — If NEEDS FIXES</span>
+<span class="cmd">./fix.sh BOD-123</span>
+<span class="comment"># Repeat from Step 2</span></pre>
+<h3>Reviewing a Pull Request</h3>
+<pre class="code-block"><span class="comment"># Run PR review with GitHub PR URL</span>
+<span class="cmd">./review-pr.sh https://github.com/daylighttransport/operations-iol-webapp/pull/123</span>
+
+<span class="comment"># Read report and take action on GitHub</span>
+<span class="cmd">cat review-report.md</span></pre>
+</div>
+
+<div class="stitle">Prerequisites &amp; Requirements</div>
+<div class="prereq-section">
+<p>Before setting up the system, ensure you have the following accounts and tools ready.</p>
+<table class="prereq-table">
+<thead><tr><th>Requirement</th><th>Purpose</th><th>Where to Get</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Node.js v18+</td><td>Required to run Claude Code CLI</td><td>nodejs.org</td><td><span class="badge-req">Required</span></td></tr>
+<tr><td>Claude Code CLI</td><td>The core AI engine running all agents</td><td>npm install -g @anthropic-ai/claude-code</td><td><span class="badge-req">Required</span></td></tr>
+<tr><td>Anthropic API Key</td><td>Authenticates Claude Code to org account</td><td>console.anthropic.com</td><td><span class="badge-req">Required</span></td></tr>
+<tr><td>Jira API Token</td><td>Agent 01 reads tickets via REST API</td><td>id.atlassian.com/manage-profile/security/api-tokens</td><td><span class="badge-req">Required</span></td></tr>
+<tr><td>Figma Desktop App</td><td>Figma MCP server runs locally via app</td><td>figma.com/downloads</td><td><span class="badge-rec">Recommended</span></td></tr>
+<tr><td>Figma Access Token</td><td>Fallback if desktop MCP unavailable</td><td>figma.com Settings > Personal access tokens</td><td><span class="badge-rec">Recommended</span></td></tr>
+<tr><td>GitHub Token</td><td>PR Reviewer Agent fetches PR diffs</td><td>github.com/settings/tokens</td><td><span class="badge-rec">For PR Review</span></td></tr>
+<tr><td>VS Code</td><td>IDE with integrated terminal for running scripts</td><td>code.visualstudio.com</td><td><span class="badge-opt">Optional</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="stitle" id="setup">Installation &amp; Setup Guide</div>
+<div class="install-section">
+<h3>Step 1 — Install Claude Code</h3>
+<pre class="code-block"><span class="comment"># Check Node.js version (must be v18+)</span>
+<span class="cmd">node --version</span>
+
+<span class="comment"># Install Claude Code globally</span>
+<span class="cmd">npm install -g @anthropic-ai/claude-code</span>
+
+<span class="comment"># Login with org API key</span>
+<span class="cmd">claude</span>
+<span class="comment"># Select option 2: Anthropic Console account</span>
+<span class="comment"># Paste API key from console.anthropic.com</span></pre>
+
+<h3>Step 2 — Set Up API Key Permanently</h3>
+<pre class="code-block"><span class="comment"># Export key for current session</span>
+<span class="cmd">export ANTHROPIC_API_KEY=sk-ant-api03-your-key-here</span>
+
+<span class="comment"># Make it permanent across terminal sessions</span>
+<span class="cmd">echo 'export ANTHROPIC_API_KEY=sk-ant-api03-your-key-here' >> ~/.zshrc</span>
+<span class="cmd">source ~/.zshrc</span></pre>
+
+<h3>Step 3 — Navigate to Your Project</h3>
+<pre class="code-block"><span class="cmd">cd /path/to/your/project</span></pre>
+
+<h3>Step 4 — Create Agent Files and Scripts</h3>
+<pre class="code-block"><span class="comment"># Create agents folder and all required files</span>
+<span class="cmd">mkdir agents</span>
+<span class="cmd">touch run.sh fix.sh review-pr.sh docs.sh review-report.md</span>
+<span class="cmd">touch agents/01-task-breakdown.md agents/02-codebase.md agents/02-codebase-update.md</span>
+<span class="cmd">touch agents/03-figma.md agents/04-dev.md agents/05-test.md</span>
+<span class="cmd">touch agents/06-reviewer.md agents/07-bugfix.md agents/08-docs.md agents/pr-reviewer.md</span>
+
+<span class="comment"># Make scripts executable (Mac/Linux)</span>
+<span class="cmd">chmod +x run.sh fix.sh review-pr.sh docs.sh</span></pre>
+
+<h3>Step 5 — Create .env File</h3>
+<pre class="code-block"><span class="comment"># Create .env in project root</span>
+<span class="cmd">touch .env</span>
+
+<span class="comment"># Add the following content to .env</span>
+ANTHROPIC_API_KEY=sk-ant-api03-your-key-here
+JIRA_URL=https://yourcompany.atlassian.net
+JIRA_EMAIL=you@yourcompany.com
+JIRA_API_TOKEN=your-jira-token-here
+FIGMA_ACCESS_TOKEN=your-figma-token-here
+GITHUB_TOKEN=your-github-token-here</pre>
+
+<h3>Step 6 — Set Up MCP Connections</h3>
+<pre class="code-block"><span class="comment"># Add Figma Desktop MCP (open Figma app first)</span>
+<span class="cmd">claude mcp add --scope user --transport http figma-desktop http://127.0.0.1:3845/mcp</span>
+
+<span class="comment"># Add Atlassian MCP (Jira)</span>
+<span class="cmd">claude mcp add --transport sse atlassian https://mcp.atlassian.com/v1/sse</span>
+
+<span class="comment"># Add GitHub MCP</span>
+<span class="cmd">claude mcp add --scope user --transport http github https://api.githubcopilot.com/mcp</span>
+
+<span class="comment"># Verify all three are connected</span>
+<span class="cmd">claude mcp list</span>
+<span class="ok">figma-desktop: Connected</span>
+<span class="ok">atlassian: Connected</span>
+<span class="ok">github: Connected</span></pre>
+
+<h3>Step 7 — Set Permissions</h3>
+<p>Create <code class="inline-code">.claude/settings.local.json</code> in your project root:</p>
+<pre class="code-block"><span class="cmd">mkdir -p .claude</span>
+<span class="comment"># Create settings file with full permissions</span>
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Write(*)",
+      "Read(*)",
+      "WebFetch(*)"
+    ]
+  }
+}</pre>
+
+<h3>Step 8 — Run Your First Ticket</h3>
+<pre class="code-block"><span class="cmd">./run.sh BOD-123</span>
+<span class="comment"># First run will automatically generate codebase-context.md</span>
+<span class="comment"># This takes 3-10 minutes depending on project size</span>
+<span class="comment"># All subsequent runs skip this step and are much faster</span></pre>
+
+<div class="note-box">
+<div class="note-icon">💡</div>
+<div class="note-text"><strong>First Run Note:</strong> The first time you run the script, Agent 02 will scan your entire codebase (2,101+ files for this project). This takes 5-10 minutes. After that it only updates incrementally and takes seconds.</div>
+</div>
+</div>
+
+<div class="stitle" id="scripts">Scripts Reference</div>
+<div class="scripts-ref-section">
+<p>All four scripts live in the project root and follow the same pattern — they load <code class="inline-code">.env</code> automatically, check codebase context, then run the appropriate agents.</p>
+<table class="scripts-ref-table">
+<thead><tr><th>Script</th><th>Usage</th><th>What It Does</th><th>When to Use</th></tr></thead>
+<tbody>
+<tr><td><code class="inline-code">./run.sh</code></td><td><code class="inline-code">./run.sh BOD-123</code></td><td>Full pipeline: Jira read → Figma read → Code → Tests → Review → Report</td><td>Starting any new feature ticket</td></tr>
+<tr><td><code class="inline-code">./fix.sh</code></td><td><code class="inline-code">./fix.sh BOD-123</code></td><td>Bug fix loop: Agent 07 fixes → Agent 06 re-reviews → Repeat until APPROVED</td><td>After NEEDS FIXES verdict</td></tr>
+<tr><td><code class="inline-code">./review-pr.sh</code></td><td><code class="inline-code">./review-pr.sh [PR-URL]</code></td><td>PR review only: Fetch PR diff → Review against codebase context → Report</td><td>Reviewing any GitHub PR</td></tr>
+<tr><td><code class="inline-code">./docs.sh</code></td><td><code class="inline-code">./docs.sh</code></td><td>Documentation only: Update README, JSDoc, CHANGELOG based on changes.md</td><td>After approving and committing</td></tr>
+</tbody>
+</table>
+
+<h3>Automatic Codebase Context Management</h3>
+<p>Every script automatically manages <code class="inline-code">codebase-context.md</code> before running. No git hooks or manual steps needed.</p>
+<table class="context-table">
+<thead><tr><th>Condition</th><th>Action Taken</th><th>Time</th></tr></thead>
+<tbody>
+<tr><td>codebase-context.md does not exist</td><td>Agent 02 runs full scan of entire project</td><td>5-10 minutes (first time only)</td></tr>
+<tr><td>1-5 files changed since last run</td><td>Skip update (minor change)</td><td>Instant</td></tr>
+<tr><td>6-20 files changed since last run</td><td>Agent 02 Update runs incremental update</td><td>30-60 seconds</td></tr>
+<tr><td>20+ files changed since last run</td><td>Agent 02 runs full rescan</td><td>5-10 minutes</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="stitle">Sample Review Report Output</div>
+<div class="sample-section">
+<p>After Agent 06 completes its review, a <code class="inline-code">review-report.md</code> file is generated in the project root. Here is an example of what it looks like:</p>
+<pre class="code-block"><span class="ok"># Code Review Report — BOD-614</span>
+<span class="comment">## Summary</span>
+Ticket: [FE] Global Rates - Rate Base List UI
+Files Changed: 6 new, 3 modified
+Test Coverage: 84%
+Figma Compliance: 91%
+
+<span class="comment">## Issues Found</span>
+| Severity | File | Line | Issue |
+|----------|------|------|-------|
+| HIGH     | RateBasesList.tsx | 47 | Missing error boundary for API failure state |
+| MEDIUM   | useRateBases.ts   | 23 | TODO comment left in production code |
+| LOW      | GlobalRates.tsx   | 12 | Unused import: PageHeader |
+
+<span class="comment">## Checklist</span>
+[x] Acceptance criteria covered
+[x] Follows existing patterns (MUI DataGrid, TanStack Query)
+[x] TypeScript strict mode passing
+[x] Unit tests written
+[x] Integration tests written
+[ ] Error states handled
+[x] Loading states handled
+[x] Empty states handled
+[x] Figma colors match (#1A56DB primary)
+[ ] Figma spacing matches (8px gap expected, 12px used)
+
+<span class="comment">## Verdict</span>
+<span class="verdict-fail">VERDICT: NEEDS FIXES</span>
+Reason: 1 HIGH severity issue must be resolved before merge.
+Run ./fix.sh BOD-614 to automatically fix flagged issues.</pre>
+
+<p>After running <code class="inline-code">./fix.sh</code> and all issues are resolved:</p>
+<pre class="code-block"><span class="ok">VERDICT: APPROVED</span>
+All HIGH and MEDIUM issues resolved.
+Test coverage: 86%. Figma compliance: 94%.
+Safe to commit and merge.</pre>
+</div>
+
+<div class="stitle" id="security">Security &amp; Token Safety</div>
+<div class="security-section">
+<p>All credentials are stored locally and never uploaded to any external server. Here is how each credential is protected:</p>
+<table class="security-table">
+<thead><tr><th>Credential</th><th>Storage Location</th><th>Protection</th></tr></thead>
+<tbody>
+<tr><td>Anthropic API Key</td><td>~/.zshrc + .env</td><td>Local machine only. Never committed to git.</td></tr>
+<tr><td>Jira API Token</td><td>.env file</td><td>.gitignore prevents commit. Token scoped to read-only.</td></tr>
+<tr><td>Figma Access Token</td><td>.env file</td><td>.gitignore prevents commit. Read-only scope.</td></tr>
+<tr><td>GitHub Token</td><td>.env file</td><td>.gitignore prevents commit. Repo read scope only.</td></tr>
+</tbody>
+</table>
+
+<h3>What to Add to .gitignore</h3>
+<pre class="code-block"><span class="comment"># Add these lines to your .gitignore</span>
+.env
+codebase-context.md
+subtasks.json
+figma-specs.md
+figma-url.txt
+changes.md
+review-report.md
+.last-context-commit</pre>
+
+<div class="warning-box">
+<div class="warning-icon">⚠️</div>
+<div class="warning-text"><strong>Important:</strong> Never commit the .env file to GitHub. Double check your .gitignore before every push. If a token is accidentally exposed, revoke it immediately from the respective service dashboard and generate a new one.</div>
+</div>
+</div>
+
+<div class="stitle">Team Onboarding Guide</div>
+<div class="onboarding-section">
+<p>When a new developer joins the team and needs to use this system, follow these steps:</p>
+<h3>For the New Developer</h3>
+<div class="onboarding-steps">
+<div class="onboard-step"><div class="step-num">1</div><div class="step-label">Install Claude Code</div><div class="step-sub">npm install -g @anthropic-ai/claude-code</div></div>
+<div class="onboard-step"><div class="step-num">2</div><div class="step-label">Get API Key</div><div class="step-sub">Ask manager for org Anthropic key</div></div>
+<div class="onboard-step"><div class="step-num">3</div><div class="step-label">Clone Repo</div><div class="step-sub">agents/ and scripts already included</div></div>
+<div class="onboard-step"><div class="step-num">4</div><div class="step-label">Create .env</div><div class="step-sub">Copy .env.example and fill tokens</div></div>
+<div class="onboard-step"><div class="step-num">5</div><div class="step-label">Set Up MCP</div><div class="step-sub">Run 3 claude mcp add commands</div></div>
+<div class="onboard-step"><div class="step-num">6</div><div class="step-label">Run First Ticket</div><div class="step-sub">./run.sh TICKET-123</div></div>
+</div>
+
+<h3>What Is Already in the Repo</h3>
+<p>The agents folder and all scripts are committed to the repository. A new developer only needs to set up their own credentials and MCP connections. They do NOT need to recreate agent prompts or scripts.</p>
+<pre class="code-block"><span class="comment"># Files already in repo (committed)</span>
+<span class="ok">agents/01-task-breakdown.md</span>
+<span class="ok">agents/02-codebase.md</span>
+<span class="ok">agents/03-figma.md</span>
+<span class="ok">agents/04-dev.md</span>
+<span class="ok">agents/05-test.md</span>
+<span class="ok">agents/06-reviewer.md</span>
+<span class="ok">agents/07-bugfix.md</span>
+<span class="ok">agents/08-docs.md</span>
+<span class="ok">agents/pr-reviewer.md</span>
+<span class="ok">run.sh fix.sh review-pr.sh docs.sh</span>
+<span class="ok">.claude/settings.local.json</span>
+
+<span class="comment"># Files NOT in repo (personal - each developer creates their own)</span>
+<span class="fail">.env</span>
+<span class="fail">codebase-context.md</span>
+<span class="fail">review-report.md</span></pre>
+</div>
+
+<div class="stitle">Limitations &amp; What to Always Check</div>
+<div class="limitations-section">
+<p>The system gets 70-80% right automatically. Here is what it guarantees and what you must always verify manually.</p>
+<div class="limits-grid">
+<div class="limits-card good">
+<div class="limits-header">✓ What the System Guarantees</div>
+<div class="limits-content">
+Code follows existing patterns exactly<br>
+All acceptance criteria attempted<br>
+Tests written for all new code<br>
+Security basics checked (XSS, injection)<br>
+TypeScript strict mode passing<br>
+Figma colors and typography checked<br>
+Review report always generated<br>
+Nothing committed without your approval
+</div>
+</div>
+<div class="limits-card bad">
+<div class="limits-header">✗ What You Must Always Verify</div>
+<div class="limits-content">
+Business logic is correct<br>
+UI looks right in the actual browser<br>
+Edge cases and error states work<br>
+Performance is acceptable<br>
+No regression in existing features<br>
+API integration works end to end<br>
+Pixel-perfect Figma match<br>
+Production data scenarios covered
+</div>
+</div>
+</div>
+<div class="warning-box">
+<div class="warning-icon">⚠️</div>
+<div class="warning-text"><strong>Golden Rule:</strong> Always read review-report.md. Always run git diff before committing. Always test the feature manually in the browser before pushing to production. Never blindly commit even when verdict is APPROVED.</div>
+</div>
+</div>
+
+<div class="stitle" id="troubleshooting">Troubleshooting</div>
+<div class="troubleshoot-section">
+<table class="troubleshoot-table">
+<thead><tr><th>Problem</th><th>Cause</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Credit balance too low error</td><td>Anthropic API credits exhausted</td><td>Ask org admin to top up credits at console.anthropic.com/settings/billing</td></tr>
+<tr><td>Redirecting to browser login</td><td>API key not set in environment</td><td>Run: export ANTHROPIC_API_KEY=your-key and then claude</td></tr>
+<tr><td>Agent 01 cannot read Jira</td><td>JIRA_API_TOKEN missing or wrong in .env</td><td>Test with: source .env && curl -u "$JIRA_EMAIL:$JIRA_API_TOKEN" $JIRA_URL/rest/api/3/issue/BOD-123</td></tr>
+<tr><td>Figma MCP failed to connect</td><td>Figma desktop app not open</td><td>Open Figma app first, then run claude mcp list to verify</td></tr>
+<tr><td>Permission denied errors</td><td>.claude/settings.local.json too restrictive</td><td>Replace with: allow Bash(*), Write(*), Read(*), WebFetch(*)</td></tr>
+<tr><td>codebase-context.md not created</td><td>Write permission blocked</td><td>Check .claude/settings.local.json has Write(*) permission</td></tr>
+<tr><td>Pipeline stops after Agent 01</td><td>subtasks.json not created</td><td>Check Jira token, verify curl test works, check .env is loaded</td></tr>
+<tr><td>Tests written for wrong code</td><td>Agent 05 ran without subtasks.json</td><td>Fix Agent 01 first. Add pipeline exit check after Agent 01 in run.sh</td></tr>
+<tr><td>changes.md not created</td><td>Agent 04 did not finish properly</td><td>Add explicit instruction at end of agents/04-dev.md to always create changes.md</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="stitle" id="faq">Frequently Asked Questions</div>
+<div class="faq-section">
+<h3>Can I run multiple tickets at the same time?</h3>
+<p>Not recommended in the same project folder as agents share context files like subtasks.json and review-report.md. Run one ticket at a time per project. You can run different tickets in different project clones simultaneously.</p>
+
+<h3>What happens if the API key expires mid-run?</h3>
+<p>The pipeline will stop with a credit or auth error. Simply run the same command again after refreshing your key. The codebase-context.md is already saved so it will not re-scan the whole project.</p>
+
+<h3>Can I modify the agent prompts?</h3>
+<p>Yes. All agent prompts are in the <code class="inline-code">agents/</code> folder as plain markdown files. Edit them to match your team's specific conventions or review criteria. Changes apply immediately on the next run.</p>
+
+<h3>Does it work on Windows?</h3>
+<p>Yes. Use .bat scripts instead of .sh scripts. The logic is identical but uses Windows batch syntax. Run in PowerShell or Command Prompt.</p>
+
+<h3>What if there is no Figma design for a ticket?</h3>
+<p>Agent 03 checks for figma-url.txt. If it contains NO_FIGMA_LINK or does not exist, Agent 03 writes NO_FIGMA_DESIGN to figma-specs.md and skips automatically. The rest of the pipeline continues normally.</p>
+
+<h3>How do I update the codebase context manually?</h3>
+<p>Delete codebase-context.md and run any script. It will automatically trigger a full rescan. Or make 20+ changes and run a script — the auto-detection will trigger a full rescan for you.</p>
+
+<h3>Can this system handle backend and frontend in the same monorepo?</h3>
+<p>Yes. Agent 02 scans the full project and understands multiple languages and frameworks in the same repository. Agent 04 will write code in the correct language for each part of the codebase based on what it reads in codebase-context.md.</p>
+</div>
+
 <div class="footer"><strong>ideyaLabs Tech Pvt Ltd</strong> &middot; Multi-Agent Development System &middot; Claude Code v2.1.63 &middot; Sonnet 4.6 &middot; Built by Aman K</div>
 </div>
 
 <script>
+// Smooth scroll behavior
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const navbarHeight = document.querySelector('.navbar').offsetHeight;
+      const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// Highlight active section in navbar
+function updateActiveNav() {
+  const sections = document.querySelectorAll('[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+  const navbarHeight = document.querySelector('.navbar').offsetHeight;
+  
+  let currentSection = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - navbarHeight - 100;
+    const sectionBottom = sectionTop + section.offsetHeight;
+    if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+      currentSection = section.getAttribute('id');
+    }
+  });
+  
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('href') === '#' + currentSection) {
+      item.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', updateActiveNav);
+window.addEventListener('load', updateActiveNav);
+
+// Theme toggle function
 function toggleTheme() {
   const body = document.body;
   const icon = document.getElementById('theme-icon');
